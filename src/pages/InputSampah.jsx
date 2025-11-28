@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   Upload,
@@ -18,6 +18,7 @@ import {
 const InputSampah = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const fileInputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [category, setCategory] = useState("");
@@ -83,12 +84,16 @@ const InputSampah = () => {
   const removeImage = () => {
     setSelectedFile(null);
     setPreview(null);
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#004019]">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-teal-900 to-emerald-950">
       {/* Header */}
-      <div className="bg-[#06221199] backdrop-blur-xl border-b border-emerald-500/20">
+      <div className="bg-gradient-to-r from-slate-900/95 via-emerald-900/20 to-slate-900/95 backdrop-blur-xl border-b border-emerald-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <button
@@ -136,6 +141,7 @@ const InputSampah = () => {
             {!preview ? (
               <label className="group relative block w-full aspect-video border-2 border-dashed border-emerald-500/30 hover:border-emerald-500/60 rounded-2xl cursor-pointer transition-all duration-300 overflow-hidden bg-[#1739286f] hover:bg-green-800/60">
                 <input
+                  ref={fileInputRef}
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
@@ -166,11 +172,11 @@ const InputSampah = () => {
                 <button
                   type="button"
                   onClick={removeImage}
-                  className="absolute top-4 right-4 p-2 bg-red-500/90 hover:bg-red-600 rounded-full transition-all duration-300 hover:scale-110"
+                  className="absolute top-4 right-4 z-20 p-2 bg-red-500 hover:bg-red-600 rounded-full transition-all duration-300 hover:scale-110 cursor-pointer shadow-lg"
                 >
                   <X className="w-5 h-5 text-white" />
                 </button>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
               </div>
             )}
           </div>

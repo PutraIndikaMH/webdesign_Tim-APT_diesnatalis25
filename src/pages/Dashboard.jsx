@@ -148,45 +148,49 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#004019]">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-teal-900 to-emerald-950">
       {/* Navigation */}
       <Navigation onLoginClick={() => {}} />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 mt-20 sm:mt-0">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 mt-20 sm:mt-24 md:mt-28 lg:mt-32">
         {/* Welcome Section */}
-        <div className="mb-6 sm:mb-8">
-          <div className="bg-g bg-[#0c2f1e6f] border border-emerald-500/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 sm:gap-6">
+        <div className="mb-4 sm:mb-6 md:mb-8">
+          <div className="bg-[#0c2f1e6f] border border-emerald-500/30 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 backdrop-blur-xl relative">
+            <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
               <img
                 src={userData.avatar}
                 alt="User Avatar"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl shadow-2xl shadow-emerald-500/50 object-cover border-2 border-emerald-500/30"
+                className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl md:rounded-2xl shadow-2xl shadow-emerald-500/50 object-cover border-2 border-emerald-500/30 flex-shrink-0"
               />
-              <div className="flex-1 text-center md:text-left">
-                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">
+              <div className="flex-1 text-center md:text-left min-w-0">
+                <h1 className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-1 sm:mb-2 leading-tight break-words">
                   Selamat Datang, {userData.name}! 👋
                 </h1>
-                <p className="text-slate-300 text-sm sm:text-base">
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base break-words">
                   Mari lanjutkan kontribusi Anda untuk lingkungan yang lebih
                   bersih
                 </p>
               </div>
-              <div className="flex lg:hidden items-center gap-3 bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10 w-full md:w-auto justify-center">
-                <Zap className="w-8 h-8 text-yellow-400" />
-                <div>
-                  <p className="text-slate-400 text-xs">Total Poin</p>
-                  <p className="text-white font-bold text-xl">
+              <div className="flex lg:hidden items-center gap-2 sm:gap-3 bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-3 border border-white/10 w-full md:w-auto justify-center flex-shrink-0">
+                <Zap className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-yellow-400 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-slate-400 text-[10px] sm:text-xs whitespace-nowrap">
+                    Total Poin
+                  </p>
+                  <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
                     {userPoints.toLocaleString()}
                   </p>
                 </div>
               </div>
-              <div className="hidden lg:flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/10">
-                <Zap className="w-10 h-10 text-yellow-400" />
-                <div>
-                  <p className="text-slate-400 text-xs">Total Poin</p>
-                  <p className="text-white font-bold text-2xl">
+              <div className="hidden lg:flex items-center gap-3 bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-4 border border-white/10 flex-shrink-0">
+                <Zap className="w-10 h-10 text-yellow-400 flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-slate-400 text-xs whitespace-nowrap">
+                    Total Poin
+                  </p>
+                  <p className="text-white font-bold text-2xl whitespace-nowrap">
                     {userPoints.toLocaleString()}
                   </p>
                 </div>
@@ -196,38 +200,40 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-4 sm:mb-6 md:mb-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className=" bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105 group"
+              className=" bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 hover:border-emerald-500/30 transition-all duration-300 hover:scale-105 group"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
                 <div
-                  className={`p-3 rounded-xl bg-gradient-to-br ${stat.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  className={`p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${stat.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <stat.icon className="w-6 h-6 text-white" />
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
               </div>
-              <p className="text-slate-400 text-xs sm:text-sm mb-1">
+              <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm mb-1">
                 {stat.label}
               </p>
-              <p className="text-white text-lg sm:text-xl md:text-2xl font-bold break-all">
+              <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold break-all">
                 {stat.value}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {/* Quick Actions */}
           <div className="lg:col-span-2">
-            <div className=" bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-2xl sm:rounded-3xl p-4 sm:p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-emerald-500/20 rounded-xl">
-                  <Zap className="w-5 h-5 text-emerald-400" />
+            <div className=" bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 lg:p-6">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                <div className="p-1.5 sm:p-2 bg-emerald-500/20 rounded-lg sm:rounded-xl">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
                 </div>
-                <h2 className="text-xl font-bold text-white">Quick Actions</h2>
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
+                  Quick Actions
+                </h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -237,19 +243,21 @@ const Dashboard = () => {
                     onClick={() =>
                       navigate(action.path, { state: { from: "/dashboard" } })
                     }
-                    className={`group relative bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 hover:border-${action.color}-500/50 rounded-2xl p-6 text-left transition-all duration-300 hover:scale-[1.02] overflow-hidden`}
+                    className={`group relative bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 hover:border-${action.color}-500/50 rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 text-left transition-all duration-300 hover:scale-[1.02] overflow-hidden`}
                   >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-2xl"></div>
+                    <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-2xl"></div>
                     <div className="relative z-10">
                       <div
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${action.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br ${action.gradient} flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                       >
-                        <action.icon className="w-6 h-6 text-white" />
+                        <action.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <h3 className="text-white font-semibold text-lg mb-1">
+                      <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-1">
                         {action.title}
                       </h3>
-                      <p className="text-slate-400 text-sm">{action.desc}</p>
+                      <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm">
+                        {action.desc}
+                      </p>
                     </div>
                   </button>
                 ))}
@@ -257,26 +265,28 @@ const Dashboard = () => {
             </div>
 
             {/* Monthly Challenge */}
-            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-2xl sm:rounded-3xl p-4 sm:p-6 mt-4 sm:mt-6">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-500/20 rounded-xl">
-                    <Target className="w-5 h-5 text-purple-400" />
+            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 lg:p-6 mt-3 sm:mt-4 md:mt-5 lg:mt-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6 gap-2">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-purple-500/20 rounded-lg sm:rounded-xl">
+                    <Target className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                   </div>
-                  <h2 className="text-xl font-bold text-white">
+                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
                     Monthly Challenge
                   </h2>
                 </div>
-                <span className="text-sm text-slate-400">15 hari tersisa</span>
+                <span className="text-[10px] sm:text-xs md:text-sm text-slate-400 whitespace-nowrap">
+                  15 hari tersisa
+                </span>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-300">
+                  <div className="flex items-center justify-between mb-2 gap-2">
+                    <span className="text-slate-300 text-[10px] sm:text-xs md:text-sm lg:text-base">
                       Input 50kg Sampah Plastik
                     </span>
-                    <span className="text-emerald-400 font-semibold">
+                    <span className="text-emerald-400 font-semibold text-[10px] sm:text-xs md:text-sm whitespace-nowrap">
                       {monthlyChallenge.current}/{monthlyChallenge.target} kg
                     </span>
                   </div>
@@ -297,32 +307,34 @@ const Dashboard = () => {
           </div>
 
           {/* Right Sidebar */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6">
             {/* User Profile Card */}
-            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-2xl sm:rounded-3xl p-4 sm:p-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
+            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 lg:p-6">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <img
                     src={userData.avatar}
                     alt="User Avatar"
-                    className="w-16 h-16 rounded-xl object-cover border-2 border-emerald-500/30"
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl object-cover border-2 border-emerald-500/30"
                   />
-                  <div className="flex-1">
-                    <h3 className="text-white font-semibold text-lg">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate">
                       {userData.name}
                     </h3>
-                    <p className="text-slate-400 text-sm">{userData.email}</p>
+                    <p className="text-slate-400 text-[10px] sm:text-xs md:text-sm truncate">
+                      {userData.email}
+                    </p>
                   </div>
                 </div>
 
-                <div className="border-t border-slate-700/50 pt-4 space-y-3">
-                  <div className="flex items-center justify-between text-sm">
+                <div className="border-t border-slate-700/50 pt-3 sm:pt-4 space-y-2 sm:space-y-3">
+                  <div className="flex items-center justify-between text-[10px] sm:text-xs md:text-sm">
                     <span className="text-slate-400">Member sejak</span>
                     <span className="text-white font-semibold">
                       {userData.joinDate}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-[10px] sm:text-xs md:text-sm">
                     <span className="text-slate-400">Level</span>
                     <span className="text-emerald-400 font-semibold">
                       Gold Member
@@ -333,15 +345,15 @@ const Dashboard = () => {
                 <div className="space-y-2">
                   <button
                     onClick={() => setShowEditProfile(true)}
-                    className="w-full py-3 bg-green-700 hover:bg-green-900 text-white font-semibold rounded-xl transition-all duration-300 border border-slate-700/50 hover:border-emerald-500/50"
+                    className="w-full py-2 sm:py-2.5 md:py-3 bg-green-700 hover:bg-green-900 text-white font-semibold text-xs sm:text-sm md:text-base rounded-lg sm:rounded-xl transition-all duration-300 border border-slate-700/50 hover:border-emerald-500/50"
                   >
                     Edit Profile
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full py-2 sm:py-2.5 md:py-3 bg-red-500 hover:bg-red-600 text-white font-semibold text-xs sm:text-sm md:text-base rounded-lg sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    <LogOut size={18} />
+                    <LogOut size={14} className="sm:w-4 sm:h-4" />
                     Logout
                   </button>
                 </div>
@@ -349,19 +361,19 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-2xl sm:rounded-3xl p-4 sm:p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-orange-500/20 rounded-xl">
-                  <Activity className="w-5 h-5 text-orange-400" />
+            <div className="bg-[#171d1b8d] backdrop-blur-xl border border-slate-700/50 rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 lg:p-6">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
+                <div className="p-1.5 sm:p-2 bg-orange-500/20 rounded-lg sm:rounded-xl">
+                  <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
                 </div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
                   Recent Activity
                 </h2>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4">
                 {recentActivities.length === 0 ? (
-                  <div className="text-center py-8 text-slate-400">
+                  <div className="text-center py-6 sm:py-8 text-slate-400 text-xs sm:text-sm">
                     Belum ada aktivitas
                   </div>
                 ) : (
@@ -371,25 +383,25 @@ const Dashboard = () => {
                     return (
                       <div
                         key={activity.id}
-                        className="flex items-start gap-3 p-3 bg-green-600/50 rounded-xl hover:bg-slate-500 transition-all duration-300"
+                        className="flex items-start gap-2 sm:gap-3 p-2 sm:p-2.5 md:p-3 bg-green-600/50 rounded-lg sm:rounded-xl hover:bg-slate-500 transition-all duration-300"
                       >
                         <div
-                          className={`p-2 rounded-lg bg-${activity.color}-500/20`}
+                          className={`p-1.5 sm:p-2 rounded-lg bg-${activity.color}-500/20`}
                         >
                           <IconComponent
-                            className={`w-4 h-4 text-${activity.color}-400`}
+                            className={`w-3 h-3 sm:w-4 sm:h-4 text-${activity.color}-400`}
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-medium truncate">
+                          <p className="text-white text-[10px] sm:text-xs md:text-sm font-medium truncate">
                             {activity.action}
                           </p>
-                          <p className="text-slate-400 text-xs mt-1">
+                          <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5 sm:mt-1">
                             {getRelativeTime(activity.timestamp)}
                           </p>
                         </div>
                         <span
-                          className={`text-sm font-semibold ${
+                          className={`text-[10px] sm:text-xs md:text-sm font-semibold flex-shrink-0 ${
                             activity.points.startsWith("+")
                               ? "text-emerald-400"
                               : "text-red-400"

@@ -19,6 +19,7 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showRequireLoginToast, setShowRequireLoginToast] = useState(false);
   const [showAlreadyLoginToast, setShowAlreadyLoginToast] = useState(false);
+  const [showComingSoonToast, setShowComingSoonToast] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -210,10 +211,22 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-4 pt-6">
-                <button className="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
+                <button
+                  onClick={() => {
+                    setShowComingSoonToast(true);
+                    setTimeout(() => setShowComingSoonToast(false), 2500);
+                  }}
+                  className="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
+                >
                   Our Mission
                 </button>
-                <button className="px-8 py-3 rounded-full bg-transparent text-white font-semibold border-2 border-white hover:bg-white hover:text-slate-950 transition-all duration-300 hover:scale-105">
+                <button
+                  onClick={() => {
+                    setShowComingSoonToast(true);
+                    setTimeout(() => setShowComingSoonToast(false), 2500);
+                  }}
+                  className="px-8 py-3 rounded-full bg-transparent text-white font-semibold border-2 border-white hover:bg-white hover:text-slate-950 transition-all duration-300 hover:scale-105"
+                >
                   Our Vision
                 </button>
               </div>
@@ -361,10 +374,15 @@ const Home = () => {
               <div
                 data-aos="fade-up"
                 data-aos-delay="100"
-                className="relative group"
+                className="relative group cursor-pointer"
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    setShowLogin(true);
+                  }
+                }}
               >
                 {/* TAMBAHAN: Class 'h-full' agar tinggi card sama rata */}
-                <div className="relative h-full bg-[#0EB157] border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-900/20 flex flex-col items-center cursor-default">
+                <div className="relative h-full bg-[#0EB157] border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-900/20 flex flex-col items-center">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-white/5 rounded-3xl transition-all duration-500"></div>
 
                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#0EB157] font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -420,7 +438,13 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay="200"
                 className="relative group cursor-pointer"
-                onClick={() => navigate("/input-sampah")}
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    setShowLogin(true);
+                    return;
+                  }
+                  navigate("/input-sampah");
+                }}
               >
                 {/* TAMBAHAN: Class 'h-full' */}
                 <div className="relative h-full bg-[#0EB157] border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-900/20 flex flex-col items-center">
@@ -470,7 +494,13 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay="300"
                 className="relative group cursor-pointer"
-                onClick={() => navigate("/daily-poin")}
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    setShowLogin(true);
+                    return;
+                  }
+                  navigate("/daily-poin");
+                }}
               >
                 {/* TAMBAHAN: Class 'h-full' */}
                 <div className="relative h-full bg-[#0EB157] border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-900/20 flex flex-col items-center">
@@ -529,7 +559,13 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay="400"
                 className="relative group cursor-pointer"
-                onClick={() => navigate("/check-poin")}
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    setShowLogin(true);
+                    return;
+                  }
+                  navigate("/check-poin");
+                }}
               >
                 {/* TAMBAHAN: Class 'h-full' */}
                 <div className="relative h-full bg-[#0EB157] border border-white/10 rounded-3xl p-8 hover:border-white/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-900/20 flex flex-col items-center">
@@ -856,6 +892,15 @@ const Home = () => {
         <div className="fixed left-1/2 -translate-x-1/2 bottom-8 z-50">
           <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-2xl shadow-2xl border border-emerald-600/30">
             Kamu sudah login! 🎉
+          </div>
+        </div>
+      )}
+
+      {/* Coming Soon Toast */}
+      {showComingSoonToast && (
+        <div className="fixed left-1/2 -translate-x-1/2 bottom-8 z-50">
+          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-2xl shadow-2xl border border-blue-600/30">
+            Fitur akan segera dikembangkan ✨
           </div>
         </div>
       )}

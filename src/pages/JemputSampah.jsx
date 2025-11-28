@@ -78,9 +78,9 @@ const JemputSampah = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#004019]">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-teal-900 to-emerald-950">
       {/* Header */}
-      <div className="bg-[#06221199] backdrop-blur-xl border-b border-emerald-500/20">
+      <div className="bg-gradient-to-r from-slate-900/95 via-emerald-900/20 to-slate-900/95 backdrop-blur-xl border-b border-emerald-500/20">
         <div className="max-w-7xl mx-auto px-3 py-3">
           <div className="flex items-center gap-4">
             <button
@@ -358,7 +358,8 @@ const JemputSampah = () => {
                 Penjemputan Berhasil Dijadwalkan!
               </h3>
               <p className="text-slate-300">
-                Driver kami akan segera menghubungi Anda sebelum waktu penjemputan.
+                Driver kami akan segera menghubungi Anda sebelum waktu
+                penjemputan.
               </p>
               <div className="w-full bg-slate-800/50 rounded-2xl p-4 space-y-2 text-sm">
                 <div className="flex justify-between text-slate-400">

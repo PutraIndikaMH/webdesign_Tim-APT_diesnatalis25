@@ -72,9 +72,9 @@ const DailyPoin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#004019]">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-950 via-teal-900 to-emerald-950">
       {/* Header */}
-      <div className="bg-slate-900/50 backdrop-blur-xl border-b border-emerald-500/20">
+      <div className="bg-gradient-to-r from-slate-900/95 via-emerald-900/20 to-slate-900/95 backdrop-blur-xl border-b border-emerald-500/20">
         <div className="max-w-7xl mx-auto  px-3 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 sm:gap-4">
             <button

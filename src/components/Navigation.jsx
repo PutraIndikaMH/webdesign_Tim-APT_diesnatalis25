@@ -108,8 +108,8 @@ const Navigation = ({ onLoginClick }) => {
         <nav
           className={`w-full max-w-7xl flex items-center justify-between py-3 px-6 md:px-8 rounded-full transition-all duration-500 ${
             isScrolled
-              ? "bg-slate-900/95 backdrop-blur-xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/10"
-              : "bg-black/30 backdrop-blur-md border border-white/10 shadow-xl"
+              ? "bg-gradient-to-r from-slate-900/95 via-emerald-900/20 to-slate-900/95 backdrop-blur-xl border border-emerald-500/30 shadow-2xl shadow-emerald-500/20"
+              : "bg-gradient-to-r from-black/40 via-emerald-950/30 to-black/40 backdrop-blur-md border border-white/10 shadow-xl"
           }`}
         >
           {/* Logo */}
