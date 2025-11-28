@@ -150,41 +150,41 @@ const Navigation = ({ onLoginClick }) => {
                   onClick={() => navigate("/dashboard")}
                   className="hidden md:flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-slate-800/80 to-slate-900/80 hover:from-slate-700/80 hover:to-slate-800/80 backdrop-blur-xl border border-emerald-500/30 hover:border-emerald-400/50 text-white transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 group"
                 >
-                <div className="relative">
-                  <img
-                    src={AvatarImg}
-                    alt="User"
-                    className="w-9 h-9 rounded-xl object-cover border-2 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300"
+                  <div className="relative">
+                    <img
+                      src={AvatarImg}
+                      alt="User"
+                      className="w-9 h-9 rounded-xl object-cover border-2 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300"
+                    />
+                    <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <span className="text-xs text-slate-400 font-medium">
+                      Welcome back
+                    </span>
+                    <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                      {userData?.name || "User"}
+                    </span>
+                  </div>
+                  <ChevronDown
+                    size={16}
+                    className="text-emerald-400 group-hover:translate-y-0.5 transition-transform"
                   />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="text-xs text-slate-400 font-medium">
-                    Welcome back
-                  </span>
-                  <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                    {userData?.name || "User"}
-                  </span>
-                </div>
-                <ChevronDown
-                  size={16}
-                  className="text-emerald-400 group-hover:translate-y-0.5 transition-transform"
-                />
-              </button>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("te-tome-user");
-                  setIsLoggedIn(false);
-                  setUserData(null);
-                  navigate("/home");
-                }}
-                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/80 hover:bg-red-600 backdrop-blur-xl border border-red-500/50 hover:border-red-400/70 text-white transition-all duration-300 hover:scale-105 shadow-lg"
-                title="Logout"
-              >
-                <LogOut size={18} />
-                <span className="text-sm font-semibold">Logout</span>
-              </button>
-            </>
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("te-tome-user");
+                    setIsLoggedIn(false);
+                    setUserData(null);
+                    navigate("/home");
+                  }}
+                  className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/80 hover:bg-red-600 backdrop-blur-xl border border-red-500/50 hover:border-red-400/70 text-white transition-all duration-300 hover:scale-105 shadow-lg"
+                  title="Logout"
+                >
+                  <LogOut size={18} />
+                  <span className="text-sm font-semibold">Logout</span>
+                </button>
+              </>
             ) : (
               <button
                 onClick={onLoginClick}
@@ -243,44 +243,46 @@ const Navigation = ({ onLoginClick }) => {
               </button>
             ))}
             {isLoggedIn ? (
-              <button
-                onClick={() => {
-                  navigate("/dashboard");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center gap-3 px-4 py-4 mt-2 bg-gradient-to-r from-slate-800/80 to-slate-900/80 hover:from-slate-700/80 hover:to-slate-800/80 backdrop-blur-xl border border-emerald-500/30 hover:border-emerald-400/50 text-white rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-emerald-500/10 group"
-              >
-                <div className="relative">
-                  <img
-                    src={AvatarImg}
-                    alt="User"
-                    className="w-12 h-12 rounded-xl object-cover border-2 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300"
-                  />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
-                </div>
-                <div className="flex-1 flex flex-col items-start">
-                  <span className="text-xs text-slate-400 font-medium">
-                    Welcome back
-                  </span>
-                  <span className="text-base font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                    {userData?.name || "User"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-emerald-400" />
-              </button>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("te-tome-user");
-                  setIsLoggedIn(false);
-                  setUserData(null);
-                  navigate("/home");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center gap-3 px-4 py-3 mt-2 bg-red-500 hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg transition-all duration-300"
-              >
-                <LogOut size={20} />
-                <span>Logout</span>
-              </button>
+              <>
+                <button
+                  onClick={() => {
+                    navigate("/dashboard");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-4 mt-2 bg-gradient-to-r from-slate-800/80 to-slate-900/80 hover:from-slate-700/80 hover:to-slate-800/80 backdrop-blur-xl border border-emerald-500/30 hover:border-emerald-400/50 text-white rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-emerald-500/10 group"
+                >
+                  <div className="relative">
+                    <img
+                      src={AvatarImg}
+                      alt="User"
+                      className="w-12 h-12 rounded-xl object-cover border-2 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300"
+                    />
+                    <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-slate-900"></div>
+                  </div>
+                  <div className="flex-1 flex flex-col items-start">
+                    <span className="text-xs text-slate-400 font-medium">
+                      Welcome back
+                    </span>
+                    <span className="text-base font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                      {userData?.name || "User"}
+                    </span>
+                  </div>
+                  <ChevronDown size={18} className="text-emerald-400" />
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("te-tome-user");
+                    setIsLoggedIn(false);
+                    setUserData(null);
+                    navigate("/home");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-3 mt-2 bg-red-500 hover:bg-red-600 text-white rounded-xl font-semibold shadow-lg transition-all duration-300"
+                >
+                  <LogOut size={20} />
+                  <span>Logout</span>
+                </button>
+              </>
             ) : (
               <button
                 onClick={() => {
