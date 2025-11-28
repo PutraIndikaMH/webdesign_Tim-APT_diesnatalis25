@@ -148,15 +148,15 @@ const CheckPoin = () => {
     <div className="min-h-screen bg-[#004019]">
       {/* Header */}
       <div className="bg-[#06221199] backdrop-blur-xl border-b border-emerald-500/20">
-        <div className="max-w-7xl mx-auto px-2 py-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
               <button
                 onClick={handleBack}
-                className="p-2 hover:bg-white/5 rounded-xl transition-all duration-300"
+                className="p-2 hover:bg-white/5 rounded-xl transition-all duration-300 flex-shrink-0"
               >
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -169,22 +169,22 @@ const CheckPoin = () => {
                   />
                 </svg>
               </button>
-              <div>
-                <h1 className="text-2xl md:text-2xl font-bold text-white">
+              <div className="min-w-0">
+                <h1 className="text-xl sm:text-2xl font-bold text-white truncate">
                   Tukar Poin
                 </h1>
-                <p className="text-slate-400 text-sm mt-1">
+                <p className="text-slate-400 text-xs sm:text-sm mt-0.5 sm:mt-1 truncate">
                   Tukarkan poin Anda dengan hadiah menarik
                 </p>
               </div>
             </div>
 
             {/* User Points */}
-            <div className="hidden md:flex items-center gap-3 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30 rounded-full px-3 py-2">
-              <Coins className="w-6 h-6 text-emerald-400" />
+            <div className="hidden md:flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30 rounded-full px-3 sm:px-4 py-2 sm:py-3">
+              <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" />
               <div>
                 <p className="text-slate-400 text-xs">Poin Anda</p>
-                <p className="text-white font-bold text-xl">
+                <p className="text-white font-bold text-base sm:text-lg md:text-xl">
                   {userPoints.toLocaleString()}
                 </p>
               </div>
@@ -192,12 +192,14 @@ const CheckPoin = () => {
           </div>
 
           {/* Mobile Points Display */}
-          <div className="md:hidden mt-4 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30 rounded-2xl px-6 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Coins className="w-6 h-6 text-emerald-400" />
-              <span className="text-slate-400 text-sm">Poin Anda</span>
+          <div className="md:hidden mt-3 sm:mt-4 bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2 sm:py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" />
+              <span className="text-slate-400 text-xs sm:text-sm">
+                Poin Anda
+              </span>
             </div>
-            <p className="text-white font-bold text-xl">
+            <p className="text-white font-bold text-base sm:text-lg md:text-xl">
               {userPoints.toLocaleString()}
             </p>
           </div>
@@ -205,61 +207,63 @@ const CheckPoin = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12">
         {/* Rewards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {rewards.map((reward) => {
             const canAfford = userPoints >= reward.points;
             return (
               <div
                 key={reward.id}
-                className={`group relative bg-slate-900/50 backdrop-blur-xl border rounded-3xl p-6 shadow-xl transition-all duration-300 hover:scale-[1.03] ${
+                className={`group relative bg-slate-900/50 backdrop-blur-xl border rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl transition-all duration-300 hover:scale-[1.03] ${
                   canAfford
                     ? "border-emerald-500/30 hover:border-emerald-500/60 hover:shadow-emerald-500/20"
                     : "border-slate-700/30 opacity-60"
                 }`}
               >
                 {/* Stock Badge */}
-                <div className="absolute top-4 right-4 px-3 py-1 bg-slate-800/80 backdrop-blur-sm rounded-full text-xs text-slate-300">
+                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 px-2 sm:px-3 py-1 bg-slate-800/80 backdrop-blur-sm rounded-full text-xs text-slate-300">
                   Stock: {reward.stock}
                 </div>
 
                 {/* Reward Image */}
-                <div className="w-full aspect-square bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 rounded-2xl flex items-center justify-center mb-4 text-6xl group-hover:scale-110 transition-transform duration-300">
+                <div className="w-full aspect-square bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-5xl sm:text-6xl group-hover:scale-110 transition-transform duration-300">
                   {reward.image}
                 </div>
 
                 {/* Reward Info */}
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div>
-                    <span className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded-full mb-2">
+                    <span className="inline-block px-2 sm:px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded-full mb-2">
                       {reward.category}
                     </span>
-                    <h3 className="text-white font-semibold text-lg leading-tight">
+                    <h3 className="text-white font-semibold text-base sm:text-lg leading-tight">
                       {reward.name}
                     </h3>
                   </div>
 
                   {/* Points */}
                   <div className="flex items-center gap-2">
-                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                    <span className="text-white font-bold text-xl">
+                    <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
+                    <span className="text-white font-bold text-lg sm:text-xl">
                       {reward.points.toLocaleString()}
                     </span>
-                    <span className="text-slate-400 text-sm">poin</span>
+                    <span className="text-slate-400 text-xs sm:text-sm">
+                      poin
+                    </span>
                   </div>
 
                   {/* Redeem Button */}
                   <button
                     onClick={() => handleRedeemClick(reward)}
                     disabled={!canAfford}
-                    className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                    className={`w-full py-2.5 sm:py-3 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 flex items-center justify-center gap-2 ${
                       canAfford
                         ? "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-emerald-500/50"
                         : "bg-slate-800 text-slate-500 cursor-not-allowed"
                     }`}
                   >
-                    <Gift className="w-5 h-5" />
+                    <Gift className="w-4 h-4 sm:w-5 sm:h-5" />
                     {canAfford ? "Tukar Sekarang" : "Poin Tidak Cukup"}
                   </button>
                 </div>

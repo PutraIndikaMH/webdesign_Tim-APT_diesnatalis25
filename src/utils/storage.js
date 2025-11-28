@@ -107,7 +107,7 @@ const DEFAULT_USER_RANK = { rank: 24, points: 4250, name: "You", avatar: "YU" };
 // Get data from localStorage or return default
 export const getUserPoints = () => {
   const points = localStorage.getItem(STORAGE_KEYS.USER_POINTS);
-  return points ? parseInt(points) : 5420;
+  return points ? parseInt(points) : 0;
 };
 
 // Set user points
@@ -340,7 +340,7 @@ export const getRelativeTime = (timestamp) => {
 // Initialize storage with defaults if empty
 export const initializeStorage = () => {
   if (!localStorage.getItem(STORAGE_KEYS.USER_POINTS)) {
-    setUserPoints(5420);
+    setUserPoints(0);
   }
   if (!localStorage.getItem(STORAGE_KEYS.REWARDS)) {
     setRewards(DEFAULT_REWARDS);

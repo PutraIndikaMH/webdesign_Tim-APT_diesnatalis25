@@ -89,14 +89,14 @@ const InputSampah = () => {
     <div className="min-h-screen bg-[#004019]">
       {/* Header */}
       <div className="bg-[#06221199] backdrop-blur-xl border-b border-emerald-500/20">
-        <div className="max-w-7xl mx-auto px-3 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <button
               onClick={handleBack}
-              className="p-2 hover:bg-white/5 rounded-xl transition-all duration-300"
+              className="p-2 hover:bg-white/5 rounded-xl transition-all duration-300 flex-shrink-0"
             >
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -109,11 +109,11 @@ const InputSampah = () => {
                 />
               </svg>
             </button>
-            <div>
-              <h1 className="text-2xl md:text-2xl font-bold text-white">
+            <div className="min-w-0">
+              <h1 className="text-xl sm:text-2xl font-bold text-white truncate">
                 Input Sampah
               </h1>
-              <p className="text-slate-400 text-sm mt-1">
+              <p className="text-slate-400 text-xs sm:text-sm mt-0.5 sm:mt-1 truncate">
                 Upload foto sampah untuk mendapatkan poin
               </p>
             </div>
@@ -122,11 +122,14 @@ const InputSampah = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 sm:space-y-6 md:space-y-8"
+        >
           {/* Upload Area */}
-          <div className="bg-[#0215096f] backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-8 shadow-2xl">
-            <label className="block text-white font-semibold mb-4 text-lg">
+          <div className="bg-[#0215096f] backdrop-blur-xl border border-emerald-500/20 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl">
+            <label className="block text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">
               Upload Foto Sampah
             </label>
 
@@ -173,17 +176,17 @@ const InputSampah = () => {
           </div>
 
           {/* Category Selection */}
-          <div className=" bg-[#06221199] backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-8 shadow-2xl">
-            <label className="block text-white font-semibold mb-4 text-lg">
+          <div className=" bg-[#06221199] backdrop-blur-xl border border-emerald-500/20 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl">
+            <label className="block text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">
               Kategori Sampah
             </label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   type="button"
                   onClick={() => setCategory(cat)}
-                  className={`p-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 ${
+                  className={`p-3 sm:p-4 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 hover:scale-105 ${
                     category === cat
                       ? "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/30"
                       : " bg-[#1739286f] hover:bg-green-800/60 text-slate-300 hover:bg-slate-800 border border-slate-700"
@@ -196,8 +199,8 @@ const InputSampah = () => {
           </div>
 
           {/* Weight Input */}
-          <div className="bg-[#082c1699] backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-8 shadow-2xl">
-            <label className="block text-white font-semibold mb-4 text-lg">
+          <div className="bg-[#082c1699] backdrop-blur-xl border border-emerald-500/20 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl">
+            <label className="block text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">
               Perkiraan Berat (kg)
             </label>
             <input
@@ -217,9 +220,9 @@ const InputSampah = () => {
           <button
             type="submit"
             disabled={!selectedFile || !category || !weight}
-            className="w-full py-5 bg-green-500 hover:from-emerald-600 hover:to-emerald-700 disabled:from-slate-700 disabled:to-slate-800 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-3"
+            className="w-full py-4 sm:py-5 bg-green-500 hover:from-emerald-600 hover:to-emerald-700 disabled:from-slate-700 disabled:to-slate-800 text-white font-bold text-base sm:text-lg rounded-xl sm:rounded-2xl shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-2 sm:gap-3"
           >
-            <Upload className="w-6 h-6" />
+            <Upload className="w-5 h-5 sm:w-6 sm:h-6" />
             Submit Sampah
           </button>
         </form>

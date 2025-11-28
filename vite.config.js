@@ -7,6 +7,7 @@ export default defineConfig({
     host: "0.0.0.0", // bind ke semua network interfaces
     port: 5173, // port yang digunakan
     strictPort: true, // error jika port sudah dipakai
+    allowedHosts: [".ngrok-free.dev", ".ngrok.io", "localhost"],
     hmr: {
       clientPort: 5173, // port untuk hot module replacement
     },
